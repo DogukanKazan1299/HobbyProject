@@ -1,0 +1,44 @@
+﻿@using SeriesMoviesProjectver3.Models.Entity
+@model PagedList.IPagedList<Tbl_Books>
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form>
+    <table class="table table-striped">
+        <tr>
+            <th>KİTAP ADI</th>
+            <th>YAZAR</th>
+            <th>ÇIKIŞ TARİHİ</th>
+            <th>KATEGORİ</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+            <th>IMAGE<th>
+
+        </tr>
+
+        @foreach (var books in Model)
+        {
+            <tr>
+                <td>@books.BookName</td>
+                <td>@books.Writer</td>
+                <td>@books.ReleaseYear</td>
+                <td>@books.Tbl_Category.CategoryName</td>
+                <td><a href="/Books/DeleteBooks/@books.ID" class="btn btn-danger" />SİL</td>
+                <td><a href="/Books/GetBooks/@books.ID" class="btn btn-warning" />GÜNCELLE</td>
+                <td><img src="@books.Image" width="300px;"></td>
+
+
+            </tr>
+        }
+
+    </table>
+    @Html.PagedListPager((IPagedList)Model, values => Url.Action("Index", new { values }))
+</form>
+
+<a href="/Books/NewBooks" class="btn btn-primary" style="margin-bottom:20px">KİTAP EKLEME SAYFASI</a>
+
+

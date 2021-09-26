@@ -1,0 +1,44 @@
+﻿@model SeriesMoviesProjectver3.Models.Entity.Tbl_Games
+@{
+    ViewBag.Title = "NewGames";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+
+    <div>
+        <label>OYUN ADI</label>
+        <input type="text" class="form-control" name="Gamename" />
+
+    </div>
+    <br />
+    <div>
+        <label>YÖNETMEN</label>
+        <input type="text" class="form-control" name="Director" />
+    </div>
+    <br />
+    <div>
+        <label>TEKNOLOJİ</label>
+        <input type="text" class="form-control" name="Technology" />
+    </div>
+    <br />
+    <div>
+        <label>ÇIKIŞ TARİHİ</label>
+        <input type="text" class="form-control" name="ReleaseDate" />
+    </div>
+    <br />
+    <div>
+        <label>IMAGE ADRESİ</label>
+        <input type="text" class="form-control" name="Image" />
+    </div>
+    <br />
+    <div>
+        <label>KATEGORİ</label>
+        <input type="text" class="form-control" name="Category" />
+    </div>
+    <br />
+
+
+    <button class="btn btn-primary" id="diziekle">OYUN EKLE</button>
+</form>
+

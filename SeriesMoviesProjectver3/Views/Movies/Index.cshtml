@@ -1,0 +1,46 @@
+﻿@using SeriesMoviesProjectver3.Models.Entity
+@model PagedList.IPagedList<Tbl_Movies>
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<form>
+    <table class="table table-striped">
+        <tr>
+            <th>FİLM ADI</th>
+            <th>YÖNETMEN</th>
+            <th>AÇIKLAMA</th>
+            <th>IMDB</th>
+            <th>KATEGORİ</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+            <th>IMAGE
+            <th>
+
+        </tr>
+
+        @foreach (var movies in Model)
+        {
+            <tr>
+                <td>@movies.MoviesName</td>
+                <td>@movies.Director</td>
+                <td>@movies.Description</td>
+                <td>@movies.IMDB</td>
+                <td>@movies.Tbl_Category.CategoryName</td>
+                <td><a href="/Movies/DeleteMovies/@movies.ID" class="btn btn-danger" />SİL</td>
+                <td><a href="/Movies/GetMovies/@movies.ID" class="btn btn-warning" />GÜNCELLE</td>
+                <td><img src="@movies.Image" width="300px;"></td>
+
+
+            </tr>
+        }
+
+    </table>
+    @Html.PagedListPager((IPagedList)Model, values => Url.Action("Index", new { values }))
+</form>
+
+<a href="/Movies/NewMovies" class="btn btn-primary" style="margin-bottom:20px">FİLM EKLEME SAYFASI</a>
+
+

@@ -1,0 +1,45 @@
+﻿@using SeriesMoviesProjectver3.Models.Entity
+@model PagedList.IPagedList<Tbl_Games>
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form>
+    <table class="table table-striped">
+        <tr>
+            <th>OYUN ADI</th>
+            <th>YÖNETMEN</th>
+            <th>TEKNOLOJİ</th>
+            <th>ÇIKIŞ TARİHİ</th>
+            <th>KATEGORİ</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+            <th>IMAGE<th>
+
+        </tr>
+
+        @foreach (var games in Model)
+        {
+            <tr>
+                <td>@games.Gamename</td>
+                <td>@games.Director</td>
+                <td>@games.Technology</td>
+                <td>@games.ReleaseDate</td>
+                <td>@games.Tbl_Category.CategoryName</td>
+                <td><a href="/Games/DeleteGames/@games.ID" class="btn btn-danger" />SİL</td>
+                <td><a href="/Games/GetGames/@games.ID" class="btn btn-warning" />GÜNCELLE</td>
+                <td><img src="@games.Image" width="300px;"></td>
+
+
+            </tr>
+        }
+
+    </table>
+    @Html.PagedListPager((IPagedList)Model, values => Url.Action("Index", new { values }))
+</form>
+
+<a href="/Games/NewGames" class="btn btn-primary" style="margin-bottom:20px">OYUN EKLEME SAYFASI</a>
+

@@ -1,0 +1,40 @@
+﻿@model SeriesMoviesProjectver3.Models.Entity.Tbl_Books
+@{
+    ViewBag.Title = "NewBooks";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+
+    <div>
+        <label>KİTAP ADI</label>
+        <input type="text" class="form-control" name="Bookname" />
+
+    </div>
+    <br />
+    <div>
+        <label>YAZAR</label>
+        <input type="text" class="form-control" name="Writer" />
+    </div>
+    <br />
+   
+    <div>
+        <label>ÇIKIŞ TARİHİ</label>
+        <input type="text" class="form-control" name="ReleaseDate" />
+    </div>
+    <br />
+    <div>
+        <label>IMAGE ADRESİ</label>
+        <input type="text" class="form-control" name="Image" />
+    </div>
+    <br />
+    <div>
+        <label>KATEGORİ</label>
+        <input type="text" class="form-control" name="Category" />
+    </div>
+    <br />
+
+
+    <button class="btn btn-primary" id="diziekle">KİTAP EKLE</button>
+</form>
+

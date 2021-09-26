@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SeriesMoviesDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Books">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Writer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ReleaseYear" Type="DateTime" Precision="0" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="Int32" />
+    <NavigationProperty Name="Tbl_Category" Relationship="Self.FK_Tbl_Books_Tbl_Category" FromRole="Tbl_Books" ToRole="Tbl_Category" />
+  </EntityType>
+  <EntityType Name="Tbl_Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tbl_Books" Relationship="Self.FK_Tbl_Books_Tbl_Category" FromRole="Tbl_Category" ToRole="Tbl_Books" />
+    <NavigationProperty Name="Tbl_Games" Relationship="Self.FK_Tbl_Games_Tbl_Category" FromRole="Tbl_Category" ToRole="Tbl_Games" />
+    <NavigationProperty Name="Tbl_Movies" Relationship="Self.FK_Tbl_Movies_Tbl_Category" FromRole="Tbl_Category" ToRole="Tbl_Movies" />
+    <NavigationProperty Name="Tbl_Series" Relationship="Self.FK_Tbl_Series_Tbl_Category" FromRole="Tbl_Category" ToRole="Tbl_Series" />
+  </EntityType>
+  <EntityType Name="Tbl_Comment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Games">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Gamename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Director" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Technology" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ReleaseDate" Type="DateTime" Precision="0" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="Int32" />
+    <NavigationProperty Name="Tbl_Category" Relationship="Self.FK_Tbl_Games_Tbl_Category" FromRole="Tbl_Games" ToRole="Tbl_Category" />
+  </EntityType>
+  <EntityType Name="Tbl_Login">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Movies">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MoviesName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Director" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IMDB" Type="Double" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="Int32" />
+    <NavigationProperty Name="Tbl_Category" Relationship="Self.FK_Tbl_Movies_Tbl_Category" FromRole="Tbl_Movies" ToRole="Tbl_Category" />
+  </EntityType>
+  <EntityType Name="Tbl_Series">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SeriesName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Director" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IMDB" Type="Double" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="Int32" />
+    <NavigationProperty Name="Tbl_Category" Relationship="Self.FK_Tbl_Series_Tbl_Category" FromRole="Tbl_Series" ToRole="Tbl_Category" />
+  </EntityType>
+  <Association Name="FK_Tbl_Books_Tbl_Category">
+    <End Role="Tbl_Category" Type="Self.Tbl_Category" Multiplicity="0..1" />
+    <End Role="Tbl_Books" Type="Self.Tbl_Books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tbl_Books">
+        <PropertyRef Name="Category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Games_Tbl_Category">
+    <End Role="Tbl_Category" Type="Self.Tbl_Category" Multiplicity="0..1" />
+    <End Role="Tbl_Games" Type="Self.Tbl_Games" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tbl_Games">
+        <PropertyRef Name="Category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Movies_Tbl_Category">
+    <End Role="Tbl_Category" Type="Self.Tbl_Category" Multiplicity="0..1" />
+    <End Role="Tbl_Movies" Type="Self.Tbl_Movies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tbl_Movies">
+        <PropertyRef Name="Category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Series_Tbl_Category">
+    <End Role="Tbl_Category" Type="Self.Tbl_Category" Multiplicity="0..1" />
+    <End Role="Tbl_Series" Type="Self.Tbl_Series" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tbl_Series">
+        <PropertyRef Name="Category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SeriesMoviesDatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Tbl_Books" EntityType="Self.Tbl_Books" />
+    <EntitySet Name="Tbl_Category" EntityType="Self.Tbl_Category" />
+    <EntitySet Name="Tbl_Comment" EntityType="Self.Tbl_Comment" />
+    <EntitySet Name="Tbl_Games" EntityType="Self.Tbl_Games" />
+    <EntitySet Name="Tbl_Login" EntityType="Self.Tbl_Login" />
+    <EntitySet Name="Tbl_Movies" EntityType="Self.Tbl_Movies" />
+    <EntitySet Name="Tbl_Series" EntityType="Self.Tbl_Series" />
+    <AssociationSet Name="FK_Tbl_Books_Tbl_Category" Association="Self.FK_Tbl_Books_Tbl_Category">
+      <End Role="Tbl_Category" EntitySet="Tbl_Category" />
+      <End Role="Tbl_Books" EntitySet="Tbl_Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Games_Tbl_Category" Association="Self.FK_Tbl_Games_Tbl_Category">
+      <End Role="Tbl_Category" EntitySet="Tbl_Category" />
+      <End Role="Tbl_Games" EntitySet="Tbl_Games" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Movies_Tbl_Category" Association="Self.FK_Tbl_Movies_Tbl_Category">
+      <End Role="Tbl_Category" EntitySet="Tbl_Category" />
+      <End Role="Tbl_Movies" EntitySet="Tbl_Movies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Series_Tbl_Category" Association="Self.FK_Tbl_Series_Tbl_Category">
+      <End Role="Tbl_Category" EntitySet="Tbl_Category" />
+      <End Role="Tbl_Series" EntitySet="Tbl_Series" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

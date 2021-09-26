@@ -1,0 +1,47 @@
+﻿@model SeriesMoviesProjectver3.Models.Entity.Tbl_Series
+@{
+    ViewBag.Title = "GetSeries";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateSeries", "Series", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.ID)
+        @Html.TextBoxFor(x => x.ID, new { @class = "form-control" })
+        <br />
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.SeriesName)
+        @Html.TextBoxFor(x => x.SeriesName, new { @class = "form-control" })
+        <br />
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Director)
+        @Html.TextBoxFor(x => x.Director, new { @class = "form-control" })
+        <br />
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Description)
+        @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+        <br />
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.IMDB)
+        @Html.TextBoxFor(x => x.IMDB, new { @class = "form-control" })
+        <br />
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Image)
+        @Html.TextBoxFor(x => x.Image, new { @class = "form-control" })
+        
+        <br />
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Category)
+        @Html.TextBoxFor(x => x.Category, new { @class = "form-control" })
+        <br />
+    </div>
+    <button class="btn btn-warning">DİZİ GÜNCELLE</button>
+}
+

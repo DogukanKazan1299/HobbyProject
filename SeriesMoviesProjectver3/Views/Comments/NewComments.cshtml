@@ -1,0 +1,25 @@
+﻿@model SeriesMoviesProjectver3.Models.Entity.Tbl_Comment
+@{
+    ViewBag.Title = "NewComments";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+
+    <div>
+        <label>YORUMUNUZ</label>
+        <input type="text" class="form-control" name="Comment" />
+
+    </div>
+    <br />
+    <div>
+        <label>KULLANICI ADINIZ</label>
+        <input type="text" class="form-control" name="Username" />
+    </div>
+    <br />
+
+    
+
+    <button class="btn btn-primary" id="diziekle">YORUM EKLE</button>
+</form>
+

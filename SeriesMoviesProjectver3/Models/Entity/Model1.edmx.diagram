@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1ca7ccf0f27a4e30a5f846af73044e7a" Name="Diagram1">
+        <EntityTypeShape EntityType="SeriesMoviesDatabaseModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeriesMoviesDatabaseModel.Tbl_Books" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeriesMoviesDatabaseModel.Tbl_Category" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeriesMoviesDatabaseModel.Tbl_Comment" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeriesMoviesDatabaseModel.Tbl_Games" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeriesMoviesDatabaseModel.Tbl_Login" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeriesMoviesDatabaseModel.Tbl_Movies" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeriesMoviesDatabaseModel.Tbl_Series" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <AssociationConnector Association="SeriesMoviesDatabaseModel.FK_Tbl_Books_Tbl_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="SeriesMoviesDatabaseModel.FK_Tbl_Games_Tbl_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="SeriesMoviesDatabaseModel.FK_Tbl_Movies_Tbl_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="SeriesMoviesDatabaseModel.FK_Tbl_Series_Tbl_Category" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

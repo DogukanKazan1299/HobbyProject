@@ -1,0 +1,48 @@
+﻿@model SeriesMoviesProjectver3.Models.Entity.Tbl_Series
+@{
+    ViewBag.Title = "NewSeries";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+
+    <div>
+        <label>DİZİ ADI</label>
+        <input type="text" class="form-control" name="SeriesName" />
+       
+    </div>
+    <br />
+    <div>
+        <label>YÖNETMEN</label>
+        <input type="text" class="form-control" name="Director" />
+    </div>
+    <br />
+    <div>
+        <label>AÇIKLAMA</label>
+        <input type="text" class="form-control" name="Description" />
+    </div>
+    <br />
+    <div>
+        <label>IMDB örn:9,7</label>
+        <input type="text" class="form-control" name="IMDB" />
+    </div>
+    <br />
+    <div>
+        <label>IMAGE ADRESİ</label>
+        <input type="text" class="form-control" name="Image" />
+    </div>
+    <br />
+    <div>
+        <label>KATEGORİ</label>
+        @Html.DropDownListFor(x=>x.Tbl_Category.ID,(List<SelectListItem>)ViewBag.val,new { @class="form-control"})
+    </div>
+    <br/>
+
+
+    <button class="btn btn-primary" id="diziekle">DİZİ EKLE</button>
+</form>
+<script>
+    $('#diziekle').click(function () {
+        alert('DİZİ EKLEDİNİZ');
+    });
+</script>

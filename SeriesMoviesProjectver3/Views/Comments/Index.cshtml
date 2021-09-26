@@ -1,0 +1,36 @@
+﻿@using SeriesMoviesProjectver3.Models.Entity
+@model List<Tbl_Comment>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form>
+<table class="table table-striped">
+    <tr>
+        <th>YORUM</th>
+        <th>KULLANICI ADI</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+       
+
+    </tr>
+
+    @foreach (var comment in Model)
+    {
+        <tr>
+            <td>@comment.Comment</td>
+            <td>@comment.Username</td>
+            <td><a href="/Comments/DeleteComments/@comment.ID" class="btn btn-danger" />SİL</td>
+            <td><a href="/Comments/GetComments/@comment.ID" class="btn btn-warning" />GÜNCELLE</td>
+          
+
+        </tr>
+    }
+
+</table>
+
+</form>
+
+<a href="/Comments/NewComments" class="btn btn-primary" style="margin-bottom:20px">YORUM EKLEME SAYFASI</a>
+

@@ -1,0 +1,44 @@
+﻿@using SeriesMoviesProjectver3.Models.Entity
+@model PagedList.IPagedList<Tbl_Series>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form>
+    <table class="table table-striped">
+        <tr>
+            <th>DİZİ ADI</th>
+            <th>YÖNETMEN</th>
+            <th>AÇIKLAMA</th>
+            <th>IMDB</th>
+            <th>KATEGORİ</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+            <th>IMAGE<th>
+       
+        </tr>
+
+        @foreach(var series in Model)
+            {
+    <tr>
+        <td>@series.SeriesName</td>
+        <td>@series.Director</td>
+        <td>@series.Description</td>
+        <td>@series.IMDB</td>
+       <td>@series.Tbl_Category.CategoryName</td>
+        <td><a href="/Series/DeleteSeries/@series.ID" class="btn btn-danger"/>SİL</td>
+        <td><a href="/Series/GetSeries/@series.ID" class="btn btn-warning"/>GÜNCELLE</td>
+        <td><img src="@series.Image" width="300px;"></td>
+        
+
+    </tr>
+            }
+
+    </table>
+    @Html.PagedListPager((IPagedList)Model,values=>Url.Action("Index",new { values}))
+</form>
+
+<a href="/Series/NewSeries" class="btn btn-primary" style="margin-bottom:20px">DİZİ EKLEME SAYFASI</a>
